@@ -8,12 +8,12 @@ RUN apt-get update && \
 WORKDIR /usr/local/app
 
 # have nodemon available for local dev use (file watching)
-RUN npm install -g nodemon
+RUN npm install -g nodemon  #kind of hot reloadin, if the application is ruuning and we made any changes, it will reflect automatically"
 
 COPY package*.json ./
 
-RUN npm ci && \
- npm cache clean --force && \
+RUN npm ci && \        #more like npm install, if any version defined in package.json, it will istall that perticular package"
+ npm cache clean --force && \     #npm cache clean --force
  mv /usr/local/app/node_modules /node_modules
 
 COPY . .
